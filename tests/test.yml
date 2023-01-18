@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - /home/abhi/code/ansible/roles/role-create-libvirt-pool

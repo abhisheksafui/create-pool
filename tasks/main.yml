@@ -1,0 +1,32 @@
+---
+# tasks file for role-create-libvirt-pool
+
+- name: Check existance
+  virt_pool:
+    command: info
+    name: "{{ pool }}"
+  register: info
+  ignore_errors: yes
+
+
+- debug:
+      var: info
+      var: pool
+- name: Define pool from template
+  virt_pool:
+    command: define 
+    name: "{{ pool }}"
+    xml: "{{ lookup('template', 'dir.xml') }}"
+    #when: info.stdout.find('failed') != -1 
+
+- name: Build pool
+  community.libvirt.virt_pool:
+    state: active
+    autostart: yes
+    command: build
+    name: "{{ pool }}"
+
+- name: Mark pool autostart
+  community.libvirt.virt_pool:
+    autostart: yes
+    name: "{{ pool }}"

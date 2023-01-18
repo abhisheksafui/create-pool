@@ -1,0 +1,6 @@
+<pool type="dir">
+  <name>{{ pool }}</name>
+  <target>
+    <path>{{ dir }}</path>
+  </target>
+</pool>

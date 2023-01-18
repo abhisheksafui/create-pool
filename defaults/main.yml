@@ -1,0 +1,5 @@
+---
+# defaults file for role-create-libvirt-pool
+pool: default
+type: dir
+dir: /var/lib/libvirt/images/
